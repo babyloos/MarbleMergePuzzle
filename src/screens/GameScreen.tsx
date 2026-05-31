@@ -55,7 +55,7 @@ export default function GameScreen({ navigation }: Props) {
             <Text style={styles.modalTitle}>{t('gameOver')}</Text>
             <Text style={styles.modalScore}>{t('score')}: {score}</Text>
             {score >= best && score > 0 && (
-              <Text style={styles.newBest}>🏆 {t('highScore')}!</Text>
+              <Text style={styles.newBest}>{t('highScore')}!</Text>
             )}
             <TouchableOpacity style={styles.modalBtn} onPress={start}>
               <Text style={styles.modalBtnText}>{t('tryAgain')}</Text>
