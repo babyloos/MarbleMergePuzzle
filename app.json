@@ -30,6 +30,11 @@
     "plugins": [
       "expo-localization"
     ],
-    "owner": "babyloos"
+    "owner": "babyloos",
+    "extra": {
+      "eas": {
+        "projectId": "3ca3efad-5c42-462e-af52-0130c3e33052"
+      }
+    }
   }
 }
