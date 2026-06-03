@@ -6,13 +6,24 @@ import Marble from '../components/Marble';
 import { ACCENT, BG, MARBLE_COLORS, SURFACE, TEXT, TEXT_DIM } from '../constants/theme';
 import t from '../constants/i18n';
 import { useGameStore } from '../store/gameStore';
+import { playSound } from '../utils/sounds';
+import { loadInterstitial, showInterstitialIfReady } from '../utils/ads';
 import type { RootStackParamList } from '../../App';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Game'>;
 
 const NEXT_SIZE = 52;
 
-export default function GameScreen({ navigation }: Props) {
+export default function GameScreen({
+
+  useEffect(() => { loadInterstitial(); }, []);
+
+  const previsOver = useRef(false);
+  useEffect(() => {
+    const cur = useGameStore.getState().isOver;
+    if (cur && !previsOver.current) playSound('error');
+    previsOver.current = cur;
+  }); navigation }: Props) {
   const { grid, score, best, nextMarble, isOver, start, drop } = useGameStore();
 
   return (
